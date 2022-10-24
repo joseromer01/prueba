@@ -1,0 +1,343 @@
+DATA BASE: "BLACK_FIT"
+
+grant all privileges on black_fit.* to gym@localhost identified by '123456';
+flush privileges;
+
+create database if not exists BLACK_FIT;
+--show databases;
+--use black_fit;
+
+
+----TABLA DEL GIMNASIO----
+create table if not exists gimnasio(
+    id_gym int,
+    Nombre varchar(25),
+    Direccion varchar(30),
+    primary key (id_gym)
+    );
+
+    insert into gimnasio values(1001,'BLACK_FIT','Av pirai 4 anillo');
+
+----TABLA DE LOS TELEFONOS DEL GIMNASIO----
+#foreign key (Id_gym) references gimnasio(id_gym)
+
+create table if not exists telefonos_gimnasio(
+    Id_gym int,
+    Telefonos int
+    );
+
+    insert into telefonos_gimnasio values(1001,79846512);
+    insert into telefonos_gimnasio values(1001,77788895);
+    insert into telefonos_gimnasio values(1001,79812350);
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+----TABLA CLIENTE----
+create table if not exists clientes (
+    Id_cliente int not null auto_increment,
+    Nombre varchar(25),
+    Apellido varchar(25),
+    Genero varchar(20),
+    Fecha_nac date,
+    Fecha_ingreso date,
+    Fecha_fin date,
+    primary key (id_cliente)
+    );
+
+    insert into clientes values(null,'Jose','Romero Chavez','Masculino', '1999-04-21','2020-02-09','2021-03-09');
+    insert into clientes values(null,'Kendry', 'Cespedes', 'Femenino', '2001-05-20', '2020-03-11','2020-04-11');
+    insert into clientes values(null,'Mauricio','Guzman Mendes','Masculino','2002-02-04','2020-05-09','2020-06-09'); 
+    insert into clientes values(null,'Katerine','Flores Venecia','Femenino','2003-05-10','2020-09-23','2020-10-23'); 
+    insert into clientes values(null,'Jenifer','Castillo Prado','Femenino','2002-01-20','2020-02-28','2020-05-28');
+    insert into clientes values(null,'Luis','Bravo Mamani','Masculino','1999-09-15','2019-01-16','2019-04-16');
+    insert into clientes values(null,'Sebastian','Frankfurt','Masculino','1998-01-01','2021-01-01','2021-02-01');
+    insert into clientes values(null,'Laura','Rivera Carrasco','Femenino','2000-04-24','2020-02-14','2020-03-14');
+    insert into clientes values(null,'Luis','Quispe Dorado','Masculino','2004-11-04','2020-07-29','2020-11-29');
+    insert into clientes values(null,'Adrian','Dorado Lopez','Masculino','2004-02-11','2020-04-28','2020-05-28');
+    insert into clientes values(null,'Adriana','Ghedini','Femenino','2001-08-21','2021-02-09','2021-03-09');
+    insert into clientes values(null,'Antonela','Añez Bort','Femenino','2003-11-21','2020-07-12','2020-09-12');
+    insert into clientes values(null,'Alejandra','Rivero Mansilla','Femenino','2000-11-02','2020-02-25','2020-03-25');
+
+
+----DIRECCION DEL CLIENTE----
+#foreign key (id_cliente) references clientes(id_cliente)
+
+
+create table if not exists direccion_cliente (
+    Id_cliente int,
+    Avenida varchar(30),
+    Calle varchar(30)
+	);
+
+    insert into direccion_cliente values(1,'Pirai','Jose leon');
+	insert into direccion_cliente values(2,'Busch','Ingavi');
+	insert into direccion_cliente values(3,'Cumavi','Quijarro');
+	insert into direccion_cliente values(4,'Cañoto','Las Begonias');
+	insert into direccion_cliente values(5,'El Palmar','Claveles');
+	insert into direccion_cliente values(6,'Intermodal','Sucre');
+	insert into direccion_cliente values(7,'Centenario','21 de mayo');
+	insert into direccion_cliente values(8,'Santos Dumont','24 de septiembre');
+	insert into direccion_cliente values(9,'San Martin','Mario Rios');
+	insert into direccion_cliente values(10,'Roca y Coronado','Jesus Millon');
+	insert into direccion_cliente values(11,'Saavedra','Ibañez');
+	insert into direccion_cliente values(12,'Soruco','Colon');
+	insert into direccion_cliente values(13,'Agabata','Melchor');
+
+
+----BARRIO DEL CLIENTE----
+#foreign key (id_cliente) references clientes(id_cliente)
+
+create table if not exists barrio_cliente (
+	Id_cliente int,
+	Barrio varchar(35)
+	);
+     
+    insert into barrio_cliente values(1,'Urbari');
+    insert into barrio_cliente values(2,'Equipetrol');
+    insert into barrio_cliente values(3,'El penoco');
+    insert into barrio_cliente values(4,'hilanderia');
+    insert into barrio_cliente values(5,'27 de mayo');
+    insert into barrio_cliente values(6,'California');
+    insert into barrio_cliente values(7,'Panamericano');
+    insert into barrio_cliente values(8,'Flamingo');
+    insert into barrio_cliente values(9,'Aeronautico');
+    insert into barrio_cliente values(10,'Fabril');
+    insert into barrio_cliente values(11,'Las Palmas');
+    insert into barrio_cliente values(12,'12 de octubre');
+    insert into barrio_cliente values(13,'21 de enero');
+ 
+
+ ----TELEFONO DEL CLIENTE----
+#foreign key (id_cliente) references clientes(id_cliente)
+
+create table if not exists telefono_cliente (
+    Id_cliente int,
+	Telefono int
+	);
+
+    insert into telefono_cliente values(1,77778889);
+    insert into telefono_cliente values(2,77788899);
+    insert into telefono_cliente values(3,77889944);
+    insert into telefono_cliente values(4,77441122);
+    insert into telefono_cliente values(5,77002244);
+    insert into telefono_cliente values(6,77766655);
+    insert into telefono_cliente values(7,74125896);
+    insert into telefono_cliente values(8,74360021);
+    insert into telefono_cliente values(9,79865400);
+    insert into telefono_cliente values(10,78108205);
+    insert into telefono_cliente values(11,78946513);
+    insert into telefono_cliente values(12,77000345);
+    insert into telefono_cliente values(13,77777554);
+
+
+----CORREO DEL CLIENTE----   	
+#foreign key (id_cliente) references clientes(id_cliente)
+
+    create table if not exists correo_cliente (
+    Id_cliente int,
+	Correo varchar(50)
+	);
+
+	insert into correo_cliente values(1,'Joseromero@gmail.com');
+	insert into correo_cliente values(2,'Kendrycespedes@gmail.com');
+	insert into correo_cliente values(3,'Mauriciogg@gmail.com');
+	insert into correo_cliente values(4,'Katerinejesicc@gmail.com');
+	insert into correo_cliente values(5,'Jenifercastillors@gmail.com');
+	insert into correo_cliente values(6,'Luisbravitts@gmail.com');
+	insert into correo_cliente values(7,'Sebastianfrankfurt@gmail.com');
+	insert into correo_cliente values(8,'Laurariverarv@gmaiol.com');
+	insert into correo_cliente values(9,'Luismamanimamani@gmail.com');
+	insert into correo_cliente values(10,'Adrianly@gmail.com');
+	insert into correo_cliente values(11,'Adrianaghedini@gmail.com');
+	insert into correo_cliente values(12,'Antonelabb@gmail.com');
+	insert into correo_cliente values(13,'Alejandrariv@gmail.com');
+
+
+----PLAN DE PAGO DEL CLIENTE----
+#foreign key (id_cliente) references clientes(id_cliente)
+
+create table if not exists plan_pago_cliente (
+    Id_cliente int,
+	Plan_pago varchar(20),
+	monto_bs int
+	);
+
+    insert into plan_pago_cliente values(1,'Mensual',200);
+    insert into plan_pago_cliente values(2,'Mensual',200);
+    insert into plan_pago_cliente values(3,'Trimestre',550);
+    insert into plan_pago_cliente values(4,'Mensual',200);
+    insert into plan_pago_cliente values(5,'Trimestre',550);
+    insert into plan_pago_cliente values(6,'Año',2200);
+    insert into plan_pago_cliente values(7,'Trimestre',550);
+    insert into plan_pago_cliente values(8,'Año',2200);
+    insert into plan_pago_cliente values(9,'Mensual',200);
+    insert into plan_pago_cliente values(10,'Mensual',200);
+    insert into plan_pago_cliente values(11,'Trimestre',550);
+    insert into plan_pago_cliente values(12,'Trimestre',550);
+    insert into plan_pago_cliente values(13,'Año',2200);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------------------------------------
+
+----DATOS DE LOS ENTRENADORES----
+create table if not exists entrenadores (
+    Id_entrenador int not null auto_increment,
+    Nombre varchar(25),
+    Apellido varchar(25),
+    Genero varchar(20),
+    Fecha_nac date,
+    Fecha_ingreso date,
+    primary key (id_entrenador)
+    );
+
+    insert into entrenadores values(null,'Cesar','Fuentes Campo','Maculino','1990-02-20','2020-05-19');
+    insert into entrenadores values(null,'Alisson','Limpias Mendoza','Femenino','1998-05-14','2020-02-15');
+    insert into entrenadores values(null,'Fatima','Guardia Rodriguez','Femenino','1999-05-12','2020-01-21');
+    insert into entrenadores values(null,'Ariana','Salvatierra Paraba','Femenino','1989-06-18','2020-01-25');
+    insert into entrenadores values(null,'Tupac','sejas Peinado','Masculino','1999-10-23','2020-05-14');
+    insert into entrenadores values(null,'Jose','Chavez Carrasco','Masculino','2002-04-02','2020-08-17');
+    insert into entrenadores values(null,'Camus','Banegas Chavez','Masculino','2000-02-06','2020-02-02');
+    insert into entrenadores values(null,'Carla','Rios Flores','Femenino','1987-05-19','2020-08-18');
+    insert into entrenadores values(null,'Carolina','Leon Alvarado','Femenino','2000-05-21','2020-08-21');
+    insert into entrenadores values(null,'Cejas','Santiago sejas','Maculino','1996-06-16','2020-07-17');
+    insert into entrenadores values(null,'Dayana','Quintanilla Melgar','Femenino','2001-06-01','2020-08-21');
+    insert into entrenadores values(null,'Diego','Nunes Candia','Masculino','1999-06-04','2020-11-03');
+    insert into entrenadores values(null,'Eliane','Ativena Guzman','Femenino','1997-06-15','2020-04-23');
+    
+
+----DIRECCION DE LOS ENTRENADORES----
+
+create table if not exists direccion_entrenador (
+    Id_entrenador int,
+    Avenida varchar(30),
+    Calle varchar(30)
+	);
+
+    insert into direccion_entrenador values(1,'Pirai','Tres Cruces');
+	insert into direccion_entrenador values(2,'San Martin','Cocapabana');
+	insert into direccion_entrenador values(3,'Olimpica','Topacio');
+	insert into direccion_entrenador values(4,'Radial 17','Alto Peru');
+	insert into direccion_entrenador values(5,'Roque aguilera','Venecia');
+	insert into direccion_entrenador values(6,'Centinelas','Mexico');
+	insert into direccion_entrenador values(7,'Centenario','Bolivar');
+	insert into direccion_entrenador values(8,'Radial 10','Cuellar');
+	insert into direccion_entrenador values(9,'El Trillo','Pinto');
+	insert into direccion_entrenador values(10,'Che Guevara','Mario Alcazar');
+	insert into direccion_entrenador values(11,'Las Palmeras','Jose Leon');
+	insert into direccion_entrenador values(12,'Union','Melaza');
+	insert into direccion_entrenador values(13,'Jenecheru','El Trapiche');
+
+----BARRIO DE LOS ENTRENADORES----
+
+create table if not exists barrio_entrenador (
+	Id_entrenador int,
+	Barrio varchar(35)
+	);
+     
+    insert into barrio_entrenador values(1,'Urbari');
+    insert into barrio_entrenador values(2,'San Gregorio');
+    insert into barrio_entrenador values(3,'San Jose');
+    insert into barrio_entrenador values(4,'Cocapabana');
+    insert into barrio_entrenador values(5,'Las Palmas');
+    insert into barrio_entrenador values(6,'Los cusis');
+    insert into barrio_entrenador values(7,'Hamacas');
+    insert into barrio_entrenador values(8,'Banzer');
+    insert into barrio_entrenador values(9,'Doble via');
+    insert into barrio_entrenador values(10,'Canal Izuto');
+    insert into barrio_entrenador values(11,'Tiger');
+    insert into barrio_entrenador values(12,'Riveralta');
+    insert into barrio_entrenador values(13,'Porongo');
+
+----TELEFONO DE LOS ENTRENADORES----
+create table if not exists telefono_entrenador (
+    Id_entrenador int,
+	Telefono int
+	);
+
+    insert into telefono_entrenador values(1,78945612);
+    insert into telefono_entrenador values(2,73216549);
+    insert into telefono_entrenador values(3,78788745);
+    insert into telefono_entrenador values(4,77444565);
+    insert into telefono_entrenador values(5,71123312);
+    insert into telefono_entrenador values(6,74894546);
+    insert into telefono_entrenador values(7,78974561);
+    insert into telefono_entrenador values(8,78456131);
+    insert into telefono_entrenador values(9,79878900);
+    insert into telefono_entrenador values(10,70180758);
+    insert into telefono_entrenador values(11,70020055);
+    insert into telefono_entrenador values(12,77110005);
+    insert into telefono_entrenador values(13,79500545);
+
+
+---CORREO DEL ENTRENADOR----
+create table if not exists correo_entrenador (
+    Id_entrenador int,
+	Correo varchar(40)
+	);
+
+	insert into correo_entrenador values(1,'Cesarfuentes@gmail.com');
+	insert into correo_entrenador values(2,'AlissonLimpiass@gmail.com');
+	insert into correo_entrenador values(3,'Fatimaguardia@gmail.com');
+	insert into correo_entrenador values(4,'ArianaSalvatierrapb@gmail.com');
+	insert into correo_entrenador values(5,'TupacSejastp@gmail.com');
+	insert into correo_entrenador values(6,'Jschaves@gmail.com');
+	insert into correo_entrenador values(7,'Camusbchavez@gmail.com');
+	insert into correo_entrenador values(8,'Carlarios@gmail.com');
+	insert into correo_entrenador values(9,'CarolinaLeonj@gmail.com');
+	insert into correo_entrenador values(10,'Cejasanti@gmail.com');
+	insert into correo_entrenador values(11,'DayanaQuintac@gmail.com');
+	insert into correo_entrenador values(12,'Diegonuness@gmail.com');
+	insert into correo_entrenador values(13,'ElianeAntiv@gmail.com');
+
+-----------------*******************------------------------------------------
+
+----TABLA CON DATOS DE LAS MAQUINAS----
+Create table if not exists maquinas (
+    Id_maquina int not null auto_increment,
+	Tipo_maquina varchar(40),
+	Musculo_trabaja varchar(40),
+	primary key (id_maquina)
+	);
+
+	insert into maquinas values(null,'Banco Press','Pecho');
+	insert into maquinas values(null,'Prensa De Pierna','Femorales-Glúteos-Cuadriceps');
+	insert into maquinas values(null,'Dorsalera','Dorsales-Espalda');
+	insert into maquinas values(null,'Power Tower','Brazos-Hombro');
+	insert into maquinas values(null,'La Peck Deck','pectorales-Hombro');
+	insert into maquinas values(null,'Elíptica','Pierna-Brazo');
+	insert into maquinas values(null,'Cintas De Correr','Pierna');
+	insert into maquinas values(null,'Remo','Parte Superior');
+
+----TABLA DE LAS RUTINAS----
+create table if not exists rutinas (
+    Id_rutina int not null auto_increment,
+	Nombre_ejercicio varchar(40),
+	Tipo_de_rutina varchar(40),
+	primary key (id_rutina)
+	);
+
+    insert into rutinas values(null,'Peso Muerto','Tracción');
+    insert into rutinas values(null,'Curl De Biceps','Tracción');
+    insert into rutinas values(null,'Remo con barras','Fuerza');
+    insert into rutinas values(null,'Flexiones','Empuje');
+    insert into rutinas values(null,'Press militar','Empuje');
+    insert into rutinas values(null,'Rompecraneos','Empuje');
+    insert into rutinas values(null,'Dominadas','Tracción');
+    insert into rutinas values(null,'Press banca inclinado','Empuje');
+
+
+----TABLA DE MANTENIMIENTO----
+create table if not exists mantenimiento (
+    Id_mantenimineto int not null auto_increment,
+	Tipo_mantenimiento varchar(40),
+	Tiempo_meses int,
+	primary key (Id_mantenimineto)
+	);
+
+    insert into mantenimiento values(null,'lubricación',1);
+    insert into mantenimiento values(null,'Revisión periodica',2);
+    insert into mantenimiento values(null,'Cambio de repuestos',3);
+    insert into mantenimiento values(null,'Limpieza general',4);
+    insert into mantenimiento values(null,'mantenimiento total',6);
